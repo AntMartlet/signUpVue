@@ -119,13 +119,17 @@ export default {
         elem.value = ''
         return elem
       })
+      this.$emit('inputschange', {
+        login: null,
+        email: null,
+        userName: null
+      })
     },
     validEmail: function (email) {
       var validation = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       return validation.test(email)
     },
     changeInputs (event) {
-      console.log(!this.getValue('login'))
       this.$emit('inputschange', {
         login: this.getValue('login').length > 0 ? this.getValue('login') : null,
         email: this.getValue('e-mail').length > 0 ? this.getValue('e-mail') : null,
